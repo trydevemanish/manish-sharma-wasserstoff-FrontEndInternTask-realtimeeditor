@@ -4,55 +4,10 @@ import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Highlight from '@tiptap/extension-highlight'
 import TextAlign from '@tiptap/extension-text-align'
-
-const MenuBar = ({ editor }:{editor:any}) => {
-  if (!editor) {
-    return null
-  }
-
-  return (
-    <div className="control-group">
-      <div className="button-group">
-        <button onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()} className={editor.isActive('heading', { level: 1 }) ? 'is-active' : ''}>
-          H1
-        </button>
-        <button onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()} className={editor.isActive('heading', { level: 2 }) ? 'is-active' : ''}>
-          H2
-        </button>
-        <button onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()} className={editor.isActive('heading', { level: 3 }) ? 'is-active' : ''}>
-          H3
-        </button>
-        <button onClick={() => editor.chain().focus().setParagraph().run()} className={editor.isActive('paragraph') ? 'is-active' : ''}>
-          Paragraph
-        </button>
-        <button onClick={() => editor.chain().focus().toggleBold().run()} className={editor.isActive('bold') ? 'is-active' : ''}>
-          Bold
-        </button>
-        <button onClick={() => editor.chain().focus().toggleItalic().run()} className={editor.isActive('italic') ? 'is-active' : ''}>
-          Italic
-        </button>
-        <button onClick={() => editor.chain().focus().toggleStrike().run()} className={editor.isActive('strike') ? 'is-active' : ''}>
-          Strike
-        </button>
-        <button onClick={() => editor.chain().focus().toggleHighlight().run()} className={editor.isActive('highlight') ? 'is-active' : ''}>
-          Highlight
-        </button>
-        <button onClick={() => editor.chain().focus().setTextAlign('left').run()} className={editor.isActive({ textAlign: 'left' }) ? 'is-active' : ''}>
-          Left
-        </button>
-        <button onClick={() => editor.chain().focus().setTextAlign('center').run()} className={editor.isActive({ textAlign: 'center' }) ? 'is-active' : ''}>
-          Center
-        </button>
-        <button onClick={() => editor.chain().focus().setTextAlign('right').run()} className={editor.isActive({ textAlign: 'right' }) ? 'is-active' : ''}>
-          Right
-        </button>
-        <button onClick={() => editor.chain().focus().setTextAlign('justify').run()} className={editor.isActive({ textAlign: 'justify' }) ? 'is-active' : ''}>
-          Justify
-        </button>
-      </div>
-    </div>
-  )
-}
+import Document from '@tiptap/extension-document'
+import Paragraph from '@tiptap/extension-paragraph'
+import Text from '@tiptap/extension-text'
+import MenuBar from './Menubar'
 
 export default function Tiptap() {
 
@@ -64,23 +19,23 @@ export default function Tiptap() {
       }),
       Highlight,
     ],
-    content: `<h3 style="text-align:center">
+    content: `<h3>
         Devs Just Want to Have Fun by Cyndi Lauper
       </h3>
-      <p style="text-align:center">
+      <p >
         I come home in the morning light<br>
         My mother says, <mark>“When you gonna live your life right?”</mark><br>
         Oh mother dear we’re not the fortunate ones<br>
         And devs, they wanna have fun<br>
         Oh devs just want to have fun</p>
-      <p style="text-align:center">
+      <p >
         The phone rings in the middle of the night<br>
         My father yells, "What you gonna do with your life?"<br>
         Oh daddy dear, you know you’re still number one<br>
         But <s>girls</s>devs, they wanna have fun<br>
         Oh devs just want to have
       </p>
-      <p style="text-align:center">
+      <p >
         That’s all they really want<br>
         Some fun<br>
         When the working day is done<br>
@@ -91,10 +46,10 @@ export default function Tiptap() {
   })
 
   return (
-    <div className='flex flex-col gap-6 min-h-screen items-center px-10'>
+    <div>
       <MenuBar editor={editor} />
-      <div className='flex flex-col focus:outline-none border-none'>
-        <EditorContent editor={editor} className='focus:outline-none outline-none' />
+      <div className='pt-5 flex flex-col focus:outline-none border-none'>
+        <EditorContent editor={editor} />
       </div>
     </div>
   )
