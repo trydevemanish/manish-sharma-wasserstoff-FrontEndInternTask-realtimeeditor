@@ -1,10 +1,13 @@
-async function fetchedtoken(){
+import { ParamValue } from "next/dist/server/request/params";
+
+async function fetchedtoken(username:ParamValue){
   try {
     const res = await fetch('/api/generatejwttoken',{
       method : 'POST',
       headers : {
         'Content-Type' : 'application/json'
-      }
+      },
+      body : JSON.stringify({ username:username })
     })
 
     if(!res){
@@ -13,8 +16,6 @@ async function fetchedtoken(){
     }
 
     const data = await res.json()
-
-    console.log('data',data)
 
     return data?.token
     

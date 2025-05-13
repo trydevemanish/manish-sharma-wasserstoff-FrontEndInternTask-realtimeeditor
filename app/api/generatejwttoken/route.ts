@@ -4,6 +4,15 @@ import { NextResponse } from 'next/server';
 export async function POST(request:Request) {
   try {
 
+    const { username } = await request.json()
+
+    if(!username){
+      return NextResponse.json(
+        {message:'Username not provided'},
+        {status:400}
+      )
+    }
+
     const secret = process.env.APP_SECRET;
 
     if(!secret){
@@ -15,7 +24,7 @@ export async function POST(request:Request) {
   
     const token = jwt.sign(
       {
-        sub: "user-123",
+        sub: username,
         allowedDocumentNames: ["post-abc123"],
       },
       secret,

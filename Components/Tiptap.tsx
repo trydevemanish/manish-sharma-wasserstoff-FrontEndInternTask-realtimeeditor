@@ -57,14 +57,12 @@ export default function Tiptap({username}:props) {
     if (!editor) return;
 
     const setupProvider = async () => {
-      const token = await fetchedtoken();
+      const token = await fetchedtoken(username);
 
       if (!token) {
         console.error("Token fetch failed");
         return;
       }
-
-      console.log('token in frontend useeffect',token)
 
       const provider = new TiptapCollabProvider({
         name: 'post-abc123', 
@@ -119,7 +117,6 @@ export default function Tiptap({username}:props) {
       provider.on('awarenessChange', ({ states } : {states :any}) => {
         console.log(states)
       })
-
     }
     setupProvider()
   }, [editor])

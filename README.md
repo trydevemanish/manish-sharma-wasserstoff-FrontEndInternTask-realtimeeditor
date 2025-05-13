@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Real-Time Collaborative Text Editor – Internship Task 1
 
-## Getting Started
+A real-time collaborative text editor built using ReactJS, TypeScript,tiptap and TailwindCSS. This application allows multiple users to edit the same document simultaneously.
 
-First, run the development server:
+## 📌 Table of Contents
+- [About](#about)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [How to Run](#how-to-run)
+- [Screenshots](#screenshots)
+
+---
+
+## 🧾 About
+
+This project fulfills the requirements for Task 1 of the Frontend Developer Intern assignment. It implements a basic real-time collaborative text editor where multiple users can connect, edit, and view content updates instantly.
+
+The goal was to demonstrate:
+- Real-time synchronization between users.
+- User identification during edits.
+- Clean architecture and use of modern frontend technologies.
+
+The implementation uses ReactJS with TypeScript with tiptap and simulates real-time collaboration without requiring a backend server.
+
+---
+
+## 🔧 Features
+
+✅ Real-time editing across multiple users  
+✅ Responsive and clean UI using TailwindCSS  
+✅ Simple username prompt at start  
+
+---
+
+## ⚙️ Technologies Used
+
+- **ReactJS** – For building the UI components
+- **TypeScript** – For type safety and better developer experience
+- **TailwindCSS** – For responsive and utility-first styling
+- **Tiptap** – For creating realtime text editor collaboration
+
+---
+
+## ▶️ How to Run
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn installed
+
+### Steps
+
+1. Clone the repository:
 
 ```bash
+git clone https://github.com/yourusername/realtime-editor.git 
+
+2. Install dependencies, Start the development server:
+```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Create .env.local file:
+Add NEXT_PUBLIC_APP_ID from your tiptap cloud
+Add APP_SECRET from your tiptap cloud 
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 📸 Screenshote 
+![Frontpage](./public/scrrenshot1.png)
+![Edit Page](./public/screenshot2.png)
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

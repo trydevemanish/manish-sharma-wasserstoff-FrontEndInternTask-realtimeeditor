@@ -25,7 +25,7 @@ export default function Home() {
           <label htmlFor="name" className="text-base font-semibold">Name</label>
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} className="border text-sm py-2 border-black rounded-md px-2 w-80" placeholder="Enter your name"/>
         </div>
-        <button type="submit" className="bg-black rounded-md w-80 py-1">
+        <button type="submit" className="bg-black rounded-md w-80 py-1 cursor-pointer">
           <p className="text-white py-1 font-semibold text-sm">Get started !</p>
         </button>
       </form>
