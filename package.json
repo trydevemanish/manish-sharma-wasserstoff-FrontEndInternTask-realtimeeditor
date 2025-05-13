@@ -9,13 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@hocuspocus/provider": "^3.1.1",
+    "@hocuspocus/provider": "^2.15.2",
     "@tiptap/extension-collaboration": "^2.12.0",
+    "@tiptap/extension-collaboration-cursor": "^2.12.0",
     "@tiptap/extension-highlight": "^2.12.0",
     "@tiptap/extension-text-align": "^2.12.0",
     "@tiptap/pm": "^2.12.0",
     "@tiptap/react": "^2.12.0",
     "@tiptap/starter-kit": "^2.12.0",
+    "jsonwebtoken": "^9.0.2",
     "next": "15.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -26,6 +28,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
