@@ -75,9 +75,9 @@ export default function Tiptap() {
       console.log('token in frontend useeffect',token)
 
       const provider = new TiptapCollabProvider({
-        name: 'post-abc123', // Unique document identifier for syncing. This is your document name.
-        appId: `${process.env.NEXT_PUBLIC_APP_ID}`, // Your Cloud Dashboard AppID or `baseURL` for on-premises
-        token: token, // Your JWT token
+        name: 'post-abc123', 
+        appId: `${process.env.NEXT_PUBLIC_APP_ID}`, 
+        token: token,
         document: doc,
 
         onSynced() {
