@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Highlight from '@tiptap/extension-highlight'
@@ -8,42 +8,34 @@ import Document from '@tiptap/extension-document'
 import Paragraph from '@tiptap/extension-paragraph'
 import Text from '@tiptap/extension-text'
 import MenuBar from './Menubar'
-
+import { colors } from '@/constant/data'
 import Collaboration from '@tiptap/extension-collaboration'
 import * as Y from 'yjs'
-
+import { fetchedtoken } from '@/utils/generatetoken'
+import { getRandomElement } from '@/utils/generaterandomcolor'
 import { useEffect } from 'react'
 import { TiptapCollabProvider } from '@hocuspocus/provider'
+import { ParamValue } from 'next/dist/server/request/params'
 
 const doc = new Y.Doc() // Initialize Y.Doc for shared editing
+const getRandomColor = () => getRandomElement(colors)
 
-async function fetchedtoken(){
-  try {
-    const res = await fetch('/api/generatejwttoken',{
-      method : 'POST',
-      headers : {
-        'Content-Type' : 'application/json'
-      }
-    })
-
-    if(!res){
-      console.log('response not generated')
-      return ;
-    }
-
-    const data = await res.json()
-
-    console.log('data',data)
-
-    return data?.token
-    
-  } catch (error) {
-    console.error(`Issue: ${error}`)
-    return;
-  }
+type props = {
+  username : ParamValue
 }
 
-export default function Tiptap() {
+export default function Tiptap({username}:props) {
+  const [status, setStatus] = useState('connecting')
+
+  const getInitialUser = () => {
+    return {
+      name: username,
+      color: getRandomColor(),
+    }
+  }
+
+  const [currentUser] = useState(getInitialUser)
+  
 
   const editor = useEditor({
     extensions: [
@@ -112,6 +104,22 @@ export default function Tiptap() {
         }
         }
       })
+
+      provider.setAwarenessField('user', {
+        name: 'Kevin James',
+        color: '#ffcc00',
+      })
+
+      const statusHandler = (event : any) => {
+        setStatus(event.status)
+      }
+
+      provider.on('status', statusHandler)
+
+      provider.on('awarenessChange', ({ states } : {states :any}) => {
+        console.log(states)
+      })
+
     }
     setupProvider()
   }, [editor])
@@ -119,6 +127,12 @@ export default function Tiptap() {
   return (
     <div>
       <MenuBar editor={editor} />
+       <div
+        className="collab-status-group"
+        data-state={status === 'connected' ? 'online' : 'offline'}
+      >
+      <p className='text-center py-2'>{currentUser.name} is online </p>
+      </div>
       <div className='pt-5 flex flex-col focus:outline-none border-none'>
         <EditorContent editor={editor} />
       </div>

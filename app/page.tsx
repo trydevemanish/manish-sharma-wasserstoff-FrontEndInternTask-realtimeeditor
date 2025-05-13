@@ -10,8 +10,7 @@ export default function Home() {
 
   async function handleformsubmit(event:any) {
     event?.preventDefault()
-    console.log(name)
-    router.push('/edit')
+    router.push(`/edit/${name}`)
   }
 
   return (
