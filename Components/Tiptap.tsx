@@ -104,22 +104,25 @@ export default function Tiptap({username}:props) {
       })
 
       provider.setAwarenessField('user', {
-        name: 'Kevin James',
-        color: '#ffcc00',
+        name: username,
+        color: getRandomColor(),
       })
 
-      const statusHandler = (event : any) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const statusHandler = (event:any) => {
         setStatus(event.status)
       }
 
       provider.on('status', statusHandler)
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       provider.on('awarenessChange', ({ states } : {states :any}) => {
         console.log(states)
       })
+      
     }
     setupProvider()
-  }, [editor])
+  }, [editor,username])
 
   return (
     <div>

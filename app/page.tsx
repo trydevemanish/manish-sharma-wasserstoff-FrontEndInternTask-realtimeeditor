@@ -8,7 +8,7 @@ export default function Home() {
   const [name,setName] = useState('')
   const router = useRouter()
 
-  async function handleformsubmit(event:any) {
+  async function handleformsubmit(event:React.FormEvent<HTMLFormElement>) {
     event?.preventDefault()
     router.push(`/edit/${name}`)
   }

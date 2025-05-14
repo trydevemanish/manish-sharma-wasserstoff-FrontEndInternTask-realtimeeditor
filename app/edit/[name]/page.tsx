@@ -3,7 +3,7 @@ import React from 'react'
 import Tiptap from '@/Components/Tiptap'
 import { useParams } from 'next/navigation'
 
-export default function page() {
+export default function Page() {
   const { name } = useParams()
 
   return (
